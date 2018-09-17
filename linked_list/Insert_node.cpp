@@ -1,61 +1,121 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
-struct Node{
-	int data;
-	Node* next;
-};
-struct Node* head = NULL;
-
-void display(){
-	struct Node* temp = head;
-	while(temp){
-		cout<<temp->data<<" ";
-		temp = temp->next;
-	}
-}
-
-Node* insert(int data)
+struct node
 {
-	struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-	newNode->data = data;
-	newNode->next = head;
-	head = newNode;	
-	return head;
+	int data;
+	struct node* next;
+};
+struct node* head=NULL;
+int length_node()
+{
+	int count=0;
+	struct node*p=head;
+	while(p!=NULL)
+	{
+	count++;
+	p=p->next;
+	}
+	return count;
 }
-/*void reverse(struct Node* prev, struct Node* cur){
-	if(cur){
-		reverse(cur,cur->next);
-		cur->next = prev;
+struct node* create()
+{
+ struct node* Node=(struct node*)malloc(sizeof(struct node));
+ return Node;
+}
+void insert_node_begning(int a)
+{
+	struct node* Node=create();
+	Node->data=a;
+	Node->next=NULL;
+	
+	if(head==NULL)
+	{
+		head=Node;
 	}
 	else
-		head = prev;
-}*/
+	{
+		Node->next=head;
+		head=Node;
+	}
+}
+void insert_node_position(int a , int m)
+{
+	struct node* Node=create();
+	Node->data=a;
+	Node->next=NULL;
+	struct node* p = head;
 
-/*
-void displayR(struct Node* head){
-	struct Node* temp = head;
-	if(temp){
-		displayR(temp->next);
-		cout<<temp->data<<" ";
+	int length=length_node();
+	if(length<m)
+	cout<<"Input position is greater then lenth of linked list"<<endl;
+	else
+	{
+	while(m--)
+	{
+		p=p->next;
 	}
-}*/
-int main(){
-	int num,t;
-	cout<<"\nEnter the number of elements :";
-	cin>>t;
-	while(t){
-		cin>>num;
-		insert(num);
-		t--;
+	 p->next=Node;
+	 p=Node;
 	}
-	cout<<"\nOriginal list :";
-	display();
-//	cout<<"\nReversed list :";
-	//Node* cur = head;
-//	reverse(NULL,cur);
-//	display();
-//	cout<<"\nReverse Reversed List is :";
-	//displayR(head);
-	return 0;
+}
+void insert_node_last(int a)
+{
+	struct node* Node=create();
+	Node->data=a;
+	Node->next=NULL;
+	if(head==NULL)
+	{
+	 head=Node;
+	}
+else
+{
+	struct node* p=head;
+	while(p->next!=NULL)
+	{
+		p=p->next;
+	}
+	p->next=Node;
+}
+}
+
+void display()
+{
+	struct node* p=head;
+	while(p!=NULL)
+	{
+		cout<<p->data<<" ";
+		p=p->next;
+	}
+}
+
+int main()
+{
+	int n,a,b=0;
+	while(1)
+	{
+		cout<<"\nselect options for linked list\n 1.Enter node at 1st\n 2.Enter node at any fixed\n 3.Enter node at last\n 4.display\n 5.EXIT"<<endl;
+	    cin>>n;
+		switch (n)
+		{
+			case 1:
+			cin>>a;
+			insert_node_begning(a);
+			break;
+			case 2:
+			cin>>a;
+			cin>>b;
+			insert_node_position(a , b);
+			break;
+			case 3:
+			cin>>a;
+			insert_node_last(a);
+			break;
+			case 4:
+			display();
+			break;
+			case 5:
+			exit(0);
+		}
+	}
 }
