@@ -25,4 +25,5 @@ int main()
     s2.insert(102,5000,"Ambuj");
     s1.display();
     s2.display();
+    return 0;
 }
