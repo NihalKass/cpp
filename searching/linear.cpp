@@ -5,7 +5,7 @@ int main()
 {
     int n,a,count=0;
     cin>>n;
-    int arr[n];
+    int arr[20];
     for(int i=0;i<n;i++)
     cin>>arr[i];
 

@@ -1,13 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-struct node
+struct node							//structure for linked list
 {
 	int data;
 	struct node* next;
 };
-struct node* head=NULL;
-int length_node()
+
+struct node* head=NULL;				//head is initialize with null
+int length_node()					//transverse of linked list
 {
 	int count=0;
 	struct node*p=head;
@@ -18,12 +19,12 @@ int length_node()
 	}
 	return count;
 }
-struct node* create()
+struct node* create()				//created node and initialize memory for the data storage using malloc non continues
 {
  struct node* Node=(struct node*)malloc(sizeof(struct node));
  return Node;
 }
-void insert_node_begning(int a)
+void insert_node_begning(int a)		//insert any node at begining
 {
 	struct node* Node=create();
 	Node->data=a;
@@ -39,7 +40,7 @@ void insert_node_begning(int a)
 		head=Node;
 	}
 }
-void insert_node_position(int a , int m)
+void insert_node_position(int a , int m)	//insert node at any specific postion 
 {
 	struct node* Node=create();
 	Node->data=a;
@@ -59,7 +60,7 @@ void insert_node_position(int a , int m)
 	 p=Node;
 	}
 }
-void insert_node_last(int a)
+void insert_node_last(int a)		//insert node at the last of the linked list
 {
 	struct node* Node=create();
 	Node->data=a;
@@ -79,7 +80,7 @@ else
 }
 }
 
-void display()
+void display()						//display linked list
 {
 	struct node* p=head;
 	while(p!=NULL)
@@ -89,7 +90,7 @@ void display()
 	}
 }
 
-int main()
+int main()					//main function or driver 
 {
 	int n,a,b=0;
 	while(1)

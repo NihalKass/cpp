@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
     int n,a;
-     stack<int>s;
+    stack<int>s;
     cout<<"1.Insert_Element\n 2.Delete_Element\n 3.Display_Element\n 4.Delete element at position\n 5.EXIT"<<endl;
     while(1)
     {
@@ -39,6 +39,5 @@ int main()
             exit(0); 
             break;
         }
-    }
-    
+    } 
 }
